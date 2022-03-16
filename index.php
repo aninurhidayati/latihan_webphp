@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<?php echo "<h1>PHP Mudah </h1>"; ?>
+	<?php echo "<h1>PHP Mudah KOK</h1>"; ?>
 </body>
 
 </html>
