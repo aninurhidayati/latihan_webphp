@@ -13,7 +13,7 @@
 
 <body class="bg-light">
 	<div class="container d-flex justify-content-center mt-5 pt-5">
-		<form class="bg-info bg-opacity-25 pt-2 ps-5 pe-5 pb-3 border-1">
+		<form method="POST" action="" class="bg-info bg-opacity-25 pt-2 ps-5 pe-5 pb-3 border-1">
 			<div class="alert alert-danger" role="alert" id="alert" style="display: none"></div>
 			<div class="alert alert-success" role="alert" id="alertok" style="display: none"></div>
 			<div id="judul" class="mt-1"><b>Login Admin</b></div>
