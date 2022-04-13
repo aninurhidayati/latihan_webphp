@@ -1,3 +1,7 @@
+<?php 
+require_once("../config/koneksi_db.php"); 
+require_once("../config/config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +17,7 @@
 
 <body class="bg-light">
 	<div class="container d-flex justify-content-center mt-5 pt-5">
-		<form method="POST" action="" class="bg-info bg-opacity-25 pt-2 ps-5 pe-5 pb-3 border-1">
+		<form method="POST" action="ceklogin.php" class="bg-info bg-opacity-25 pt-2 ps-5 pe-5 pb-3 border-1">
 			<div class="alert alert-danger" role="alert" id="alert" style="display: none"></div>
 			<div class="alert alert-success" role="alert" id="alertok" style="display: none"></div>
 			<div id="judul" class="mt-1"><b>Login Admin</b></div>
@@ -24,11 +28,14 @@
 			</div>
 			<div class="mb-4">
 				<label for="password" class="form-label">Password</label>
-				<input type="password" class="form-control" id="password" />
+				<input type="password" name="password" class="form-control" id="password" />
 			</div>
-			<button type="button" class="btn btn-primary" onclick="ceklogin()">Login</button>
+			<!-- <button type="submit" name="btnbatal" class="btn btn-primary">batal</button> -->
+			<button type="submit" name="btnlogin" class="btn btn-primary">Login</button>
+
 			<a href="../index.php" class="ps-5"><b>Home</b></a>
 		</form>
+
 	</div>
 </body>
 

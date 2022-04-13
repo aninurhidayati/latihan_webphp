@@ -1,3 +1,7 @@
+<?php 
+require_once("config/koneksi_db.php"); 
+require_once("config/config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +16,7 @@
 </head>
 
 <body>
+
 	<!-- navbar -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-info">
 		<div class="container-fluid pe-5 ps-5">
