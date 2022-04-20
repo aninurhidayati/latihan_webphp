@@ -29,8 +29,11 @@ $coding = array("php", "js", ".net", "java");
 $bhs_program = array(2=>"php", 5=>"js", 7=>".net");
 echo "<br>".$bhs_program[5]; // js
 //key berupa string
+echo "<br>";
 $bhs_programs = array("code1"=>"php", "code2"=>"js", "code3"=>".net");
-echo "<br>".$bhs_programs["code1"]."<br/>"; //php
+asort($bhs_programs);
+var_dump($bhs_programs);
+echo "<br>hasilnya: ".$bhs_programs["code1"]."<br/>"; //php
 
 $Mahasiswa = array(
 	array("nama" =>"Dina", "quis"=>90, "tugas"=>85),

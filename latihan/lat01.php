@@ -10,8 +10,8 @@ asort($dtmhs);
 var_dump($dtmhs);
 
 $x = 0;
-while($x <= 13){
-	if($x > 1){
+while($x <= 10){
+	if($x > 1 && $x <= 7){
 		echo $x.",";
 	}
 	$x++;

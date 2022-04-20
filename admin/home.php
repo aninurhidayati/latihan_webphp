@@ -1,3 +1,7 @@
+<?php
+require_once("../config/koneksi_db.php");
+require_once("../config/config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +10,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Admin Home</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="../assets/bootstrap5/css/bootstrap.min.css" />
-
 </head>
 
 <body>
@@ -35,10 +39,14 @@
 					?>
 				</div>
 				<div class="col-lg-9 p-5">
+					<!-- kolom untuk menampilkan konten -->
 					<?php 
 						if(isset($_GET['modul'])){
+							//contoh $_GET['modul'] = mod_berita
+							//include "mod_berita/index.php"
 							include "".$_GET['modul']."/index.php"; 
 						}
+						
 					
 					?>
 				</div>

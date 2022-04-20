@@ -16,18 +16,20 @@ echo "<hr/>";
 $kata1 = "PHP mudah sekali";
 echo rtrim($kata1, "sekali"); //PHP mudah
 echo "<hr/>";
-$kata2 = " Coding itu Fun ";
-echo strlen($kata2);
+$kata2 = "Coding itu Fun";
+$kata2 = str_replace(" ","",$kata2);
+echo "jumlah karakter: ".strlen($kata2);
 echo "<hr/>";
 date_default_timezone_set('Asia/Jakarta');
-$today = date("d-m-Y h:i:s");
+$today = date("l, d-m-Y h:i:s");
 echo "hari ini: ".$today; //hari ini: 01-04-2022
 echo "<hr/>";
-
+/*
 $daftarTimezone = DateTimeZone::listIdentifiers();
 foreach ($daftarTimezone as $timezone) {
   echo "{$timezone} <br>";
 }
+*/
 function perkenalan($nama, $kampus = "LP3i"){
 	echo "Hallo, nama saya : ".$nama.", kuliah di ".$kampus."<br>"; 
 }

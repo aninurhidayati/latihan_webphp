@@ -1,7 +1,10 @@
 <?php 
 	include_once "berita_ctrl.php";
 ?>
-<table class="table">
+<?php 
+if(!isset($_GET['action'])){
+?>
+<table class="table table-bordered">
 	<tr>
 		<th>ID</th>
 		<th>Judul</th>
@@ -9,16 +12,25 @@
 		<th>Action</th>
 	</tr>
 	<?php 
-		index();
 		//tulis array disini
 		//looping 
-		foreach($listmenu as $b){
+		foreach($listberita as $b){
 		?>
 	<tr>
-		<td><?= $b["nm_menu"]; ?></td>
-		<td><?php //echo $variabel; ?></td>
-		<td></td>
-		<td></td>
+		<td><?= $b["id"]; ?></td>
+		<td><?= $b['judul']; ?></td>
+		<td><?= $b['konten']; ?></td>
+		<td>
+			<a href="?modul=mod_berita&action=edit" class="btn btn-xs btn-primary">
+				<i class="bi bi-pencil-square"></i>Edit</a>
+			<a href="" class="btn btn-xs btn-primary">
+				<i class="bi bi-trash"></i>Delete</a>
+		</td>
 	</tr>
 	<?php } //penutup looping ?>
 </table>
+<?php }
+else{
+	echo "ediit";
+} 
+?>
