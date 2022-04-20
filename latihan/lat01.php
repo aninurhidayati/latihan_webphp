@@ -1,4 +1,5 @@
 <?php
+echo "aku mencoba";
 $nilai = array(60,70,80,75,90);
 sort($nilai);
 var_dump($nilai);
