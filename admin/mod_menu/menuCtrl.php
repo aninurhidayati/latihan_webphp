@@ -50,6 +50,30 @@ else if(isset($_GET['act']) && ($_GET['act']== "save")){
 }
 else if(isset($_GET['act']) && ($_GET['act']== "update")){
 	//jika ada send variabel act=update, ketika proses simpan ubah data
-
+	$idmenu = $_POST['txt_idmenu'];
+	$namamenu = $_POST['txt_nmmenu'];
+	$link = $_POST['txt_link'];
+	if(isset($_POST['ck_aktif'])){
+		$aktif = 1;
+	}
+	else{
+		$aktif = 0;
+	}
+	//query untuk simpan
+	$qinsert = mysqli_query($connect_db, 
+			"UPDATE mst_menu SET nmmenu='$namamenu', link='$link', is_active=$aktif WHERE idmenu='$idmenu'")
+			or die (mysqli_error($connect_db));
+	if($qinsert){
+		//ketik proses simpan update berhasil
+		header("Location: http://localhost/latihan_webphp/admin/home.php?modul=mod_menu&act=edit&id=$idmenu");
+	}
+}
+else if(isset($_GET['act']) && ($_GET['act']== "delete")){
+	//jika ada send variabel act=edit, tampil form edit/ubah data
+	$idkey = $_GET['id']; //dapat dari URL
+	$qdelete = mysqli_query($connect_db,"DELETE from mst_menu where idmenu=$idkey")or die(mysqli_error($connect_db));
+	if($qdelete){
+		header("Location: http://localhost/latihan_webphp/admin/home.php?modul=mod_menu");
+	}
 }
 ?>
