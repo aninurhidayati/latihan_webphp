@@ -9,6 +9,7 @@ else{
 	require_once "../config/koneksi_db.php";
 	require_once "../config/config.php";
 }
+security_login();
 
 if(isset($_GET['act']) && ($_GET['act']== "add")){
 	//jika ada send variabel act=add, tampil form input/tambah
@@ -19,7 +20,8 @@ else if(isset($_GET['act']) && ($_GET['act']== "edit")){
 	//jika ada send variabel act=edit, tampil form edit/ubah data
 	$judul = "Form Edit Data";
 	$idkey = $_GET['id']; //dapat dari URL
-	$qdata = mysqli_query($connect_db,"select * from mst_menu where idmenu=$idkey")or die(mysqli_error($connect_db));
+	$qdata = mysqli_query($connect_db,"select * from mst_menu where idmenu=$idkey")
+			or die(mysqli_error($connect_db));
 	$data = mysqli_fetch_array($qdata);
 	$aktif = $data['is_active']; //value dari tabel di kolom is_active
 	if($aktif == 1){
@@ -71,7 +73,8 @@ else if(isset($_GET['act']) && ($_GET['act']== "update")){
 else if(isset($_GET['act']) && ($_GET['act']== "delete")){
 	//jika ada send variabel act=edit, tampil form edit/ubah data
 	$idkey = $_GET['id']; //dapat dari URL
-	$qdelete = mysqli_query($connect_db,"DELETE from mst_menu where idmenu=$idkey")or die(mysqli_error($connect_db));
+	$qdelete = mysqli_query($connect_db,"DELETE from mst_menu where idmenu=$idkey")
+				or die(mysqli_error($connect_db));
 	if($qdelete){
 		header("Location: http://localhost/latihan_webphp/admin/home.php?modul=mod_menu");
 	}

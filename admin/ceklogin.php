@@ -13,6 +13,8 @@ if(isset($_POST['btnlogin'])){
 		//jika hasil query data lebih dari 0
 		//header("Location:") , untuk direct atau pindah ke page lain secara otomatis
 		//URL, define constanta di ambil dari file config.php
+		session_start();
+		$_SESSION['userlogin'] = $txt_user;
 		header("Location: ".URL."home.php");	
 	}else{
 		header("Location: ".URL."");

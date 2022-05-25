@@ -10,4 +10,13 @@ $mainurl_homeadmin = $mainurl."admin/home.php";
 define("URL", $set_url);
 define("MAIN_URL", $mainurl);
 define("URL_ADMIN",$mainurl_homeadmin);
+
+function security_login(){
+	if(empty($_SESSION['userlogin'])){
+		//return "<script language=javascript>alert('Anda Harus Login Terlebih Dahulu!!')</script>";
+		return header("Location: ".URL."");
+	}else{
+		return "";
+	}
+}
 ?>

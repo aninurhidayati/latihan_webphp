@@ -27,9 +27,7 @@ if(!isset($_GET['act'])){
 				<i class="bi bi-trash"></i>Delete</a>
 		</td>
 	</tr>
-	<?php
-		}
-	?>
+	<?php }	?>
 </table>
 <?php 
 } //ini penutup if(!isset($_GET['act']))

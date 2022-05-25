@@ -1,6 +1,8 @@
 <?php
+session_start();
 require_once("../config/koneksi_db.php");
 require_once("../config/config.php");
+security_login();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,13 +21,16 @@ require_once("../config/config.php");
 	<nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
 		<div class="container-fluid">
 			<a class="navbar-brand text-white" href="#">LOGO Perusahaan</a>
+			<h3 class="d-flex flex-flex-column-reverse">
+				<?php echo $_SESSION['userlogin']; ?>
+			</h3>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
 				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="d-flex flex-row-reverse">
-				signOut
+				<a href="logout.php"> signOut </a>
 			</div>
 		</div>
 	</nav>

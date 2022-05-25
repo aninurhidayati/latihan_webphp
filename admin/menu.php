@@ -18,7 +18,8 @@
 		array("id"=>"04", "nm_menu"=>"Setting Menu", "link"=>"mod_menu")
 	);
 	*/
-	$qry_menu = mysqli_query($connect_db, "select * from mst_menu") or die("view menu".mysqli_error($connect_db));
+	$qry_menu = mysqli_query($connect_db, "select * from mst_menu") 
+				or die("Gagal tampil menu".mysqli_error($connect_db));
 
 	?>
 	<ul class="list-group">
