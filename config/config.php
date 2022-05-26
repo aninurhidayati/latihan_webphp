@@ -15,6 +15,7 @@ function security_login(){
 	if(empty($_SESSION['userlogin'])){
 		//return "<script language=javascript>alert('Anda Harus Login Terlebih Dahulu!!')</script>";
 		return header("Location: ".URL."");
+		//return "<meta http-equiv='REFRESH' content='0;url=index.php'>";
 	}else{
 		return "";
 	}

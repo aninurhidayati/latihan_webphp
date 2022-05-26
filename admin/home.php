@@ -2,7 +2,7 @@
 session_start();
 require_once("../config/koneksi_db.php");
 require_once("../config/config.php");
-security_login();
+//security_login();
 ?>
 <!DOCTYPE html>
 <html lang="en">

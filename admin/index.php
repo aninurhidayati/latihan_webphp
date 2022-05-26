@@ -20,7 +20,7 @@ require_once("../config/config.php");
 		<form method="POST" action="ceklogin.php" class="bg-info bg-opacity-25 pt-2 ps-5 pe-5 pb-3 border-1">
 			<div class="alert alert-danger" role="alert" id="alert" style="display: none"></div>
 			<div class="alert alert-success" role="alert" id="alertok" style="display: none"></div>
-			<div id="judul" class="mt-1"><b>Login Admin</b></div>
+			<div id="judul" class="mt-1"><b>Login Admin </b></div>
 			<hr />
 			<div class="mb-4">
 				<label for="username" class="form-label">Username</label>
