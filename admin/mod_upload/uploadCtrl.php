@@ -1,21 +1,19 @@
 <?php
-
-use function PHPSTORM_META\type;
-$_SESSION['message'] = "Oke, Kamu Keren!!";
-echo $_SESSION['message'];
-unset($_SESSION['message']);
-echo "cek: ".$_SESSION['message'];
-
 if(isset($_POST['btnupload'])){
 	$file = $_FILES['urlfile']; 
-	var_dump($file);
+	var_dump($file);	
+	/*tentukan folder lokasi direktori penyimpanan file */
 	$target_dir = "../../assets/img/";
-	$target_file =  $target_dir.basename($file['name']);	
-	echo $target_file."<br/>";	
+	echo $file['name']."<br/>"; //output ini yang disimpan ke database
+	/*tujuan penyimpanan file, direktori dan nama file*/
+	$target_file = $target_dir.$file['name']; 
+		//echo $target_file."<br/>";
+	/*untuk mendapatkan tipe file yang diupload */
 	$type_file = pathinfo($file['name'],PATHINFO_EXTENSION);
-	echo $type_file."<br/>";
+	/*buat variabel untuk menampung hasil validasi ,
+	apakah file boleh diupload atau tidak, jika 1 maka boleh diupload,
+	jika 0 maka tidak dapat diupload*/	
 	$is_upload = 1;
-
 	/* cek batas limit file maks.3MB*/
 	if($file['size'] > 1000000){
 		$is_upload = 0;
@@ -26,17 +24,20 @@ if(isset($_POST['btnupload'])){
 		$is_upload = 0;
 		pesan("Tipe file bukan file gambar!!");	
 	}
-	echo $is_upload;
+	/**buat variabel untuk menampung nama file yang akan disimpan ke database,
+	 * dengan nilai awal kosong, akan di beri nilai jika upload berhasil
+	 */
+	$namafile = "";
 	/**proses upload */
 	if($is_upload == 1){
 		if(move_uploaded_file($file['tmp_name'], $target_file)){
+			$namafile = $file['name']; //variabel ini yang di panggil di query
 			pesan("Berhasil upload file gambar!!");	
 		}
 		else{
 			pesan("GAGAL upload file gambar!!");	
 		}
 	}
-
 }
 
 function pesan($alert){	

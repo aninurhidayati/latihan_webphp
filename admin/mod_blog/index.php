@@ -58,7 +58,7 @@ else if(isset($_GET['act']) && ($_GET['act']== "add" || $_GET['act']== "edit")){
 						else{
 							$selec = "";
 						}
-						echo "<option value='$dt[id_kategori]' $selec>--$dt[nm_kategori]--</option>";
+						echo "<option value='$dt[id_kategori]' $selec> --$dt[nm_kategori]--</option>";
 					}
 					?>
 				</select>

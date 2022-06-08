@@ -13,11 +13,14 @@
 	</div>
 </form>
 <hr>
-<table class="table table-bordered">
+
+<?= $dt['gambar']; ?>
+<img src="../../assets/img/<?= $dt['gambar']; ?>" alt="">
+<!-- <table class="table table-bordered">
 	<tr>
 		<th width="10%">URL</th>
 		<th>View</th>
 		<th width="20%">Kategori</th>
 		<th>Action</th>
 	</tr>
-</table>
+</table> -->
