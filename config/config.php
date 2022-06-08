@@ -17,7 +17,7 @@ function security_login(){
 		return header("Location: ".URL."");
 		//return "<meta http-equiv='REFRESH' content='0;url=index.php'>";
 	}else{
-		return "";
+		return $_SESSION['userlogin'];
 	}
 }
 ?>
