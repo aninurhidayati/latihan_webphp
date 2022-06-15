@@ -22,6 +22,7 @@ if(isset($_GET['act']) && ($_GET['act']== "add")){
 	$isi = "";
 	$tanggal = date("Y-m-d");
 	$action = "insert";
+	$file_uploaded = "";
 }
 else if(isset($_GET['act']) && ($_GET['act']== "edit")){
 	//jika ada send variabel act=add, tampil form input/tambah
@@ -40,9 +41,47 @@ else if(isset($_GET['act']) && ($_GET['act']== "edit")){
 	$isi = $data['isi'];
 	$tanggal = $data['date_input'];
 	$action = "update";
+	$file_uploaded = $data['gambar'];
 }
 else if(isset($_GET['act']) && ($_GET['act']== "save")){
 	//jika ada send variabel act=save, ketika proses simpan(insert)
+	/*cek upload file terlebih dahulu */
+	if(!empty($_FILES['filegambar'])){
+		$file = $_FILES['filegambar']; 
+		$target_dir = "../../assets/img/";
+		$target_file =  $target_dir.basename($file['name']);
+		$type_file =strtolower(pathinfo($file['name'],PATHINFO_EXTENSION));
+		echo $type_file."<br/>";
+		$is_upload = 1;
+		/* cek batas limit file maks.3MB*/
+		if($file['size'] > 5000000){
+			$is_upload = 0;
+			pesan("File lebih dari 5MB!!");		
+		}
+		/**cek tipe file */
+		if($type_file != "jpg" && $type_file != "png"){
+			$is_upload = 0;
+			pesan("Tipe file bukan file gambar!!");	
+		}
+		$namafile = "";
+		/**proses upload */
+		if($is_upload == 1){
+			if(move_uploaded_file($file['tmp_name'], $target_file)){
+				$namafile = $file['name'];
+			}
+			else{
+				pesan("GAGAL upload file gambar!!");	
+			}
+		}
+	}else{
+		if($_POST['action'] == "update"){
+			$namafile = $_POST['file_uploaded'];
+		}else{
+			$namafile = "";
+		}
+		
+	}
+
 	$idblog = $_POST['idblog'];		
 	$idkategori = $_POST['kategori'];
 	$judul = $_POST['judul'];
@@ -52,10 +91,10 @@ else if(isset($_GET['act']) && ($_GET['act']== "save")){
 	$author = $_POST['author'];
 
 	//query untuk simpan
-	if($_POST['action'] == "insert"){
+	if($_POST['action'] == "insert" ){
 		$qinsert = mysqli_query($connect_db, 
-			"INSERT into mst_blog(judul,id_kategori,isi,author,date_input) 
-			VALUES('$judul','$idkategori','$isi','$author','$tglblog')")
+			"INSERT into mst_blog(judul,id_kategori,isi,author,date_input,gambar) 
+			VALUES('$judul','$idkategori','$isi','$author','$tglblog','$namafile')")
 			or die (mysqli_error($connect_db));
 		if($qinsert){
 			//ketik proses simpan berhasil
@@ -65,7 +104,7 @@ else if(isset($_GET['act']) && ($_GET['act']== "save")){
 	else{
 		$qupdate = mysqli_query($connect_db, 
 			"UPDATE mst_blog SET judul='$judul' ,id_kategori='$idkategori', isi='$isi', 
-			author='$author', date_input='$tglblog' WHERE id_blog='$idblog'")
+			author='$author', date_input='$tglblog', gambar='$namafile' WHERE id_blog='$idblog'")
 			or die (mysqli_error($connect_db));
 		if($qupdate){
 			//ketik proses simpan berhasil
@@ -73,3 +112,10 @@ else if(isset($_GET['act']) && ($_GET['act']== "save")){
 		}
 	}
 }	
+
+function pesan($alert){	
+	echo '<script language="javascript">';
+	echo 'alert("'.$alert.'")';  //not showing an alert box.
+	echo '</script>';
+	//echo '<meta http-equiv="refresh" content="0; url=http://localhost/latihan_webphp/admin/home.php?modul=mod_upload">';	
+}

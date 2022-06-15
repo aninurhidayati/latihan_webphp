@@ -103,28 +103,34 @@ require_once("config/config.php");
 	<section id="blog" class="bg-white">
 		<div class="container-fluid d-flex flex-column align-items-center p-4">
 			<h1 class="text-primary text-opacity-100 pb-3">=== My Blog ===</h1>
-
+			<?php
+				$listblog = mysqli_query($connect_db,"select m.*, k.nm_kategori from mst_blog m inner join mst_kategoriblog k
+					on m.id_kategori=k.id_kategori order by id_blog DESC")
+					or die("gagal akses table mst_menu ".mysqli_error($connect_db));
+				//looping 
+				while($r = mysqli_fetch_array($listblog)){	
+			?>
 			<div class="row mb-4">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<img src="assets/images/gambar1.jpg" width="270" class="img-fluid img-thumbnail" />
+					<img src="assets/img/<?= $r['gambar'];?>" height="100" class="img-fluid img-thumbnail" />
 				</div>
 				<div class="col-md-6">
-					<h4>Judul Artikel-1</h4>
+					<h4><?= $r['judul']; ?></h4>
 					<div>
-						<span class="badge bg-info text-white rounded-3 fs-6">10/11/2011</span>
-						<span class="text-primary fs-6">Created By : Aninur</span>
+						<span class="badge bg-info text-white rounded-3 fs-6">
+							<?= date("d-m-Y", strtotime($r['date_input'])); ?>
+						</span>
+						<span class="text-primary fs-6">Created By : <?= $r['author']; ?></span>
 					</div>
 					<p>
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores fugit quod cumque provident
-						quasi! Ut minus veritatis sed atque, aut
-						modi fugit? Veniam quos voluptatum harum cumque vero, numquam dolore! [ <a
-							href="detailblog1.html">Baca Selengkapnya</a> ]
+						<?= strip_tags(substr($r['isi'],0,200)); ?>
+						[ <a href="detailblog.php?id=<?= $r['id_blog']; ?>">Baca Selengkapnya</a> ]
 					</p>
 					<hr />
 				</div>
 			</div>
-
+			<?php } ?>
 		</div>
 	</section>
 	<!-- contact us -->
@@ -134,23 +140,30 @@ require_once("config/config.php");
 			<div class="row">
 				<div class="col col-lg-2"></div>
 				<div class="col col-lg-7">
-					<form action="#">
+					<form action="korespondenCtrl.php" method="POST">
 						<div class="row mb-3">
 							<label for="staticEmail" class="col-md-3 form-label">Email</label>
 							<div class="col-md-9">
-								<input type="text" class="form-control" id="staticEmail" value="email@example.com" />
+								<input type="email" name="email" class="form-control" placeholder="email@example.com"
+									required oninvalid="this.setCustomValidity('Email wajib diisi!!');"
+									oninput="setCustomValidity('')" />
 							</div>
 						</div>
 						<div class="row mb-3">
-							<label for="nama`" class="col-md-3 form-label">Nama Lengkap</label>
+							<label for="nama" class="col-md-3 form-label">Nama Lengkap</label>
 							<div class="col-md-9">
-								<input type="text" class="form-control" id="nama" />
+								<input type="text" name="txtnama" class="form-control" id="nama" required
+									oninvalid="this.setCustomValidity('Nama lengkap wajib diisi!!');"
+									oninput="setCustomValidity('')" />
 							</div>
 						</div>
 						<div class="row mb-3">
 							<label for="info" class="col-md-3 form-label">Informasi</label>
 							<div class="col-md-9">
-								<select name="info" id="info" class="form-select">
+								<select name="info" id="info" class="form-select" required
+									oninvalid="this.setCustomValidity('Informasi wajib diisi!!');"
+									oninput="setCustomValidity('')">
+									<option value="">--Pilih Subject--</option>
 									<option value="">Sharing Artikel</option>
 									<option value="">Penawaran Kerja</option>
 									<option value="">Lain-lain</option>
@@ -160,13 +173,19 @@ require_once("config/config.php");
 						<div class="row mb-3">
 							<label for="ket" class="col-md-3 form-label">Keterangan</label>
 							<div class="col-md-9">
-								<textarea name="ket" id="ket" cols="30" rows="5" class="form-control"></textarea>
+								<textarea name="ket" id="ket" cols="30" rows="5" required class="form-control"
+									oninput="setCustomValidity('')"
+									oninvalid="this.setCustomValidity('Keterangan wajib diisi!!');"></textarea>
 							</div>
 						</div>
 						<div class="row mb-3">
 							<div class="col-md-9 text-center">
-								<button class="btn btn-primary btn-sm"><i class="bi bi-envelope"></i> Simpan</button>
-								<button class="btn btn-secondary btn-sm"><i class="bi bi-reply"></i> Batal</button>
+								<button type="submit" name="btnsimpan" class="btn btn-primary btn-sm">
+									<i class="bi bi-envelope"></i> Simpan
+								</button>
+								<button type="reset" name="btnreset" class="btn btn-secondary btn-sm">
+									<i class="bi bi-reply"></i> Batal
+								</button>
 							</div>
 						</div>
 					</form>

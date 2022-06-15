@@ -41,7 +41,7 @@ else if(isset($_GET['act']) && ($_GET['act']== "add" || $_GET['act']== "edit")){
 ?>
 <div class="container-fluid">
 	<h3><?= $judul; ?>.</h3>
-	<form action="mod_blog/blogCtrl.php?modul=mod_blog&act=save" method="post">
+	<form action="mod_blog/blogCtrl.php?modul=mod_blog&act=save" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="idblog" value="<?= $idblog; ?>">
 		<input type="hidden" name="author" value="<?= $_SESSION['userlogin']; ?>">
 		<input type="hidden" name="action" value="<?= $action; ?>">
@@ -74,6 +74,13 @@ else if(isset($_GET['act']) && ($_GET['act']== "add" || $_GET['act']== "edit")){
 			<div class="col-md-2">Isi</div>
 			<div class="col-md-6">
 				<textarea name="isi" id="editor" cols="30" rows="10" class="form-control"><?= $isi; ?></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">Upload Gambar</div>
+			<div class="col-md-6">
+				<input type="hidden" name="file_uploaded" value="<?= $file_uploaded; ?>">
+				<input type="file" name="filegambar" id="filegambar">
 			</div>
 		</div>
 		<div class="row">
