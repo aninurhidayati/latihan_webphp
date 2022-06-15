@@ -15,12 +15,12 @@ if(isset($_POST['btnupload'])){
 	jika 0 maka tidak dapat diupload*/	
 	$is_upload = 1;
 	/* cek batas limit file maks.3MB*/
-	if($file['size'] > 1000000){
+	if($file['size'] > 3000000){
 		$is_upload = 0;
-		pesan("File lebih dari 1MB!!");		
+		pesan("File lebih dari 3MB!!");		
 	}
 	/**cek tipe file */
-	if($type_file != "jpg"){
+	if($type_file != "jpg" || $type_file != "png" || $type_file != "gif"){
 		$is_upload = 0;
 		pesan("Tipe file bukan file gambar!!");	
 	}
