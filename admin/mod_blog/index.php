@@ -79,7 +79,7 @@ else if(isset($_GET['act']) && ($_GET['act']== "add" || $_GET['act']== "edit")){
 		<div class="row">
 			<div class="col-md-2">Upload Gambar</div>
 			<div class="col-md-6">
-				<input type="hidden" name="file_uploaded" value="<?= $file_uploaded; ?>">
+				<input type="text" name="file_uploaded" value="<?= $file_uploaded; ?>">
 				<input type="file" name="filegambar" id="filegambar">
 			</div>
 		</div>
