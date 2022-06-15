@@ -140,12 +140,13 @@ require_once("config/config.php");
 			<div class="row">
 				<div class="col col-lg-2"></div>
 				<div class="col col-lg-7">
-					<form action="korespondenCtrl.php" method="POST">
+					<form action="#" method="POST" id="formkoresponden">
 						<div class="row mb-3">
 							<label for="staticEmail" class="col-md-3 form-label">Email</label>
 							<div class="col-md-9">
-								<input type="email" name="email" class="form-control" placeholder="email@example.com"
-									required oninvalid="this.setCustomValidity('Email wajib diisi!!');"
+								<input type="email" name="email" id="email" class="form-control"
+									placeholder="email@example.com" required
+									oninvalid="this.setCustomValidity('Email wajib diisi!!');"
 									oninput="setCustomValidity('')" />
 							</div>
 						</div>
@@ -180,15 +181,32 @@ require_once("config/config.php");
 						</div>
 						<div class="row mb-3">
 							<div class="col-md-9 text-center">
-								<button type="submit" name="btnsimpan" class="btn btn-primary btn-sm">
+								<button type="button" name="btnsimpan" id="btnsimpan" class="btn btn-primary btn-sm">
 									<i class="bi bi-envelope"></i> Simpan
 								</button>
-								<button type="reset" name="btnreset" class="btn btn-secondary btn-sm">
+								<button type="reset" id="btnreset" name="btnreset" class="btn btn-secondary btn-sm">
 									<i class="bi bi-reply"></i> Batal
 								</button>
 							</div>
 						</div>
 					</form>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" tabindex="-1" id="ModalKonfirmasi">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Konfirmasi</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<p>Apakah anda yakin simpan data ini?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+						<button type="button" id="btnyes" class="btn btn-primary">Ya</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -220,7 +238,9 @@ require_once("config/config.php");
 		</div>
 	</footer>
 	<!-- include file bootstrap js -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<script src="assets/bootstrap5/js/bootstrap.bundle.min.js"></script>
+	<script src="proses.js"></script>
 </body>
 
 </html>
