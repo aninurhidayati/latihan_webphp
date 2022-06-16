@@ -155,7 +155,7 @@ require_once("config/config.php");
 							<div class="col-md-9">
 								<input type="text" name="txtnama" class="form-control" id="nama" required
 									oninvalid="this.setCustomValidity('Nama lengkap wajib diisi!!');"
-									oninput="setCustomValidity('')" />
+									oninput="setCustomValidity('')" value="aninur" />
 							</div>
 						</div>
 						<div class="row mb-3">
@@ -165,9 +165,9 @@ require_once("config/config.php");
 									oninvalid="this.setCustomValidity('Informasi wajib diisi!!');"
 									oninput="setCustomValidity('')">
 									<option value="">--Pilih Subject--</option>
-									<option value="">Sharing Artikel</option>
-									<option value="">Penawaran Kerja</option>
-									<option value="">Lain-lain</option>
+									<option value="Sharing Artikel">Sharing Artikel</option>
+									<option value="Penawaran Kerja">Penawaran Kerja</option>
+									<option value="Lain-lain">Lain-lain</option>
 								</select>
 							</div>
 						</div>

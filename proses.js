@@ -1,6 +1,3 @@
-let nama = "ANi";
-document.write(nama);
-console.log(nama);
 /**ini jquery */
 $("#btnsimpan").click(function () {
   let email = $("#email").val();
@@ -17,7 +14,3 @@ $("#btnyes").click(function () {
 $("#btnreset").click(function () {
   alert("hallooo");
 });
-/**ini javascript */
-// document.getElementById("btnreset").onclick = function () {
-//   alert("hallooo");
-// };
