@@ -1,7 +1,7 @@
 <?php 
   include_once("uploadCtrl.php")
 ?>
-<form method="POST" action="mod_upload/uploadCtrl.php" enctype="multipart/form-data">
+<form method="POST" action="mod_upload/uploadCtrl.php" enctype='multipart/form-data'>
 	<div class="row">
 		<div class="col-md-8">
 			<input type="file" name="urlfile" id="urlfile" class="form-control">
@@ -14,7 +14,7 @@
 </form>
 <hr>
 
-<?= $dt['gambar']; ?>
+<!-- <?= $dt['gambar']; ?> -->
 <img src="../../assets/img/<?= $dt['gambar']; ?>" alt="">
 <!-- <table class="table table-bordered">
 	<tr>
